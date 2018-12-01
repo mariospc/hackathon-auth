@@ -1,14 +1,21 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-
-import static java.lang.Integer.parseInt;
+import java.util.Set;
 
 public class Main {
 
     private static Scanner scanner;
+    private static Set<Place> places;
+    private static Set<Course> courses;
+    private static Set<Lecture> lectures;
+    private static Set<Classroom> classrooms;
+    private static Set<Department> departments;
+
+
     public static void main(String[] args)
     {
         scanner = new Scanner(System.in);
-        System.out.println("Welcomne!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("Welcome!!!!!!!!!!!!!!!!!!!!!!!");
         int choice = menu();
         while (choice != 3)
         {
@@ -17,12 +24,53 @@ public class Main {
             {
                 case 1:
                     choice2 = addMenu();
+                    String name;
+                    boolean flag;
                     switch (choice2)
                     {
                         case 1:
-
+                            System.out.println("What is the name of the place you would like to add?");
+                            name = scanner.nextLine();
+                            flag = false;
+                            for (Place p : places)
+                            {
+                                if (p.getName().equals(name))
+                                {
+                                    flag = true;
+                                    System.out.println("This place already exists");
+                                    break;
+                                }
+                            }
+                            if (!flag)
+                            {
+                                places.add(new Place(name));
+                            }
                             break;
                         case 2:
+                            System.out.println("What is the name of the department you would like to add?");
+                            name = scanner.nextLine();
+                            flag = false;
+                            for (Department d : departments)
+                            {
+                                if (d.getName().equals(name))
+                                {
+                                    flag = true;
+                                    System.out.println("This department already exists");
+                                    break;
+                                }
+                            }
+                            if (!flag)
+                            {
+                                System.out.println("What place does your department belong to?");
+                                String placeName = scanner.nextLine();
+                                for (Place p : places)
+                                {
+                                    if (p.getName().equals(placeName))
+                                    {
+                                        departments.add(new Department(name, new Place(placeName)));
+                                    }
+                                }
+                            }
                             break;
                         case 3:
                             break;
@@ -37,6 +85,16 @@ public class Main {
                     break;
                 case 2:
                     choice2 = searchMenu();
+                    switch (choice2)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            choice = menu();
+                            break;
+                    }
                     break;
             }
         }
