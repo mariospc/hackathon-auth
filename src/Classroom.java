@@ -1,17 +1,19 @@
 public class Classroom
 {
-    /*private Long id;
+    //private Long id;
     private String name;
-    private Long depId;
+    private Department department;
 
-    public Long getId()
+    public Classroom()
     {
-        return id;
+        name = "";
+        department = null;
     }
 
-    public void setId(Long id)
+    public Classroom(String name, Department department)
     {
-        this.id = id;
+        this.name = name;
+        this.department = department;
     }
 
     public String getName()
@@ -24,13 +26,13 @@ public class Classroom
         this.name = name;
     }
 
-    public Long getDepId()
+    public Department getDepartment()
     {
-        return depId;
+        return department;
     }
 
-    public void setDepId(Long depId)
+    public void setDepartment(Department department)
     {
-        this.depId = depId;
-    }*/
+        this.department = department;
+    }
 }
